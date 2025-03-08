@@ -93,10 +93,10 @@ class PayController extends Controller
                 'currency' => strtoupper($validated['currency']),
                 'callback_url' => $callbackUrl
             ]);
-
+ 
             $responseData = $response->json();
 
-            if (!$response->successful() || !isset($responseData['success'])) {
+            if (!$response->successful() || !isset($responseData['transaction_id'])) {
                 throw new \Exception('Error en el procesamiento del pago');
             }
 
